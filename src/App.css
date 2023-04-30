@@ -30,3 +30,7 @@ nav h2, nav ul {
   display: inline-block;
   vertical-align: middle;
 }
+
+h2 {
+  margin-top: 18px !important;
+}
