@@ -23,7 +23,7 @@ function Login() {
             console.error("Upisane informacije nisu validne.");
         } else {
             localStorage.setItem("userLogged", true);
-            console.log(localStorage.getItem("userLogged"));
+            localStorage.setItem("userInfo", querySnapshot.docs[0].data())
             navigate("/home");
         }
     }
@@ -37,9 +37,9 @@ function Login() {
         <div className="form-holder">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="userEmail">Vaš kontakt email</label> <br />
-                <input className="inputEmail" type="email" name="userEmail" {...register("userEmail", { required: true})} /> <br />
+                <input className="inputEmail" type="email" name="userEmail" required {...register("userEmail")} /> <br />
                 <label htmlFor="">Vaša lozinka</label> <br />
-                <input className="inputEmail" {...register("userPassword", { required: true })} /> <br />
+                <input className="inputEmail" {...register("userPassword")} required/> <br />
                 <button type="submit">Ulogiraj se</button> <br /> <br />
                 
                 <button onClick={() => {navigate('/register')}}>Nemaš račun? Napravi ga!</button>

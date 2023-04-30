@@ -24,6 +24,7 @@ import {db} from '../firebase.js';
                 await addUser(data);
     
                 localStorage.setItem("userLogged", true);
+                localStorage.setItem("userInfo", data);
                 navigate('/home');
             } else {
                 console.error("Korisnički email je već zauzet.")
