@@ -16,10 +16,12 @@ function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />}/>
+      <Route path="/" element={<RequireAuth><Home /></RequireAuth>}/>
+      <Route path="/aboutus" element={<AboutUs />}/>
+      {/* napravit sljedece donacije ili obavijesti koji je jednostavniji<Route path="/" element={<AboutUs />}/>*/}
+
       <Route path="/login" element={<Login></Login>} />
       <Route path="/register" element={<Register></Register>} />
-      <Route path="/aboutus" element={<AboutUs />}/>
     </Routes>
     </BrowserRouter>
   )

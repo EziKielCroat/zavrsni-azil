@@ -22,10 +22,11 @@ import {db} from '../firebase.js';
             const isDuplicateUser = await checkForDuplicateUser(data);
             if(!isDuplicateUser) {
                 await addUser(data);
+                const userInfo = JSON.stringify(data);
     
                 localStorage.setItem("userLogged", true);
-                localStorage.setItem("userInfo", data);
-                navigate('/home');
+                localStorage.setItem("userInfo", userInfo);
+                navigate('/');
             } else {
                 console.error("Korisnički email je već zauzet.")
             }

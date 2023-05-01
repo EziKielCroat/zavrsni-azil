@@ -23,9 +23,12 @@ function Login() {
         if(querySnapshot.empty) {
             console.error("Upisane informacije nisu validne.");
         } else {
+            const userInfo = JSON.stringify(querySnapshot.docs[0].data());
+
             localStorage.setItem("userLogged", true);
-            localStorage.setItem("userInfo", querySnapshot.docs[0].data())
-            navigate("/home");
+            localStorage.setItem("userInfo", userInfo);
+
+            navigate("/");
         }
     }
     return (
