@@ -1,0 +1,109 @@
+.sub-main-container {
+    display: block;
+}
+
+#google-maps, .kontakt-holder {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.kontakt-holder {
+    margin-left: 10em;
+    float: right;
+    margin-right: 4em;
+}
+
+#google-maps {
+    float: left;
+    margin-left: 4em;
+    margin-top: 3em;
+}
+
+.form-holder-contact {
+    width: 600px;
+    height: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+  .form-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    width: 50%;
+  }
+  
+  .label-contact {
+    font-weight: bold;
+    margin-bottom: 5px;
+    width: 120px;
+  }
+  
+  .input-contact {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .input-contact:focus {
+    outline: none;
+    border-color: #666;
+  }
+  
+  .input-contact::placeholder {
+    color: #ccc;
+  }
+  
+  .input-contact[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 120px;
+    width: 100%;
+  }
+  
+  .input-contact[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Adjustments for phone and email inputs */
+  
+  .form-row:nth-child(2) {
+    margin-bottom: 25px;
+  }
+  
+  /* Padding adjustments */
+  
+  .form-row:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  
+  .form-row:first-child,
+  .form-row:nth-child(2) {
+    margin-bottom: 0;
+  }
+  
+  #contact-message {
+    margin-top: 10px;
+    clear: both;
+  }
+  
+  button {
+    margin-left: 1em;
+    padding:1em;
+  }

@@ -1,12 +1,22 @@
 
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from 'react-router-dom';
+import './ComponentsAssets/AboutUs.css';
+
+
+import { collection, addDoc} from "firebase/firestore"; 
+import {db} from '../firebase.js';
 
 function AboutUs() {
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        // Upiti se spremaju na firebase za administratore da vide
+        await addDoc(collection(db, "Upiti"), data); 
+        
+        console.log("Upit uspješno poslan");
+        window.location.reload();
     }
 
     return(
@@ -15,10 +25,10 @@ function AboutUs() {
             <h2>Azil za životinje</h2>
 
             <ul className="nav-stranice">
-                <button><li>Home</li></button>
-                <button><li>Donacije</li></button>
-                <button><li>Obavijesti</li></button>
-                <button><li>Admin opcije</li></button>
+                <button onClick={() => {navigate('/')}}><li>Home</li></button>
+                <button onClick={() => {navigate('/donations')}}><li>Donacije</li></button>
+                <button onClick={() => {navigate('/notifications')}}><li>Obavijesti</li></button>
+                <button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>
             </ul>
         </nav>
 
@@ -35,43 +45,46 @@ function AboutUs() {
             </div>
             
             <br />
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2751424.973836109!2d10.706122026392375!3d47.66619207163909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079b259d2a7f%3A0x1012d47bdde4c1af!2sAustrija!5e0!3m2!1shr!2shr!4v1682890478856!5m2!1shr!2shr" width="400" height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <br /><br />
+            <div className="sub-main-container">
+            <iframe id="google-maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2751424.973836109!2d10.706122026392375!3d47.66619207163909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d079b259d2a7f%3A0x1012d47bdde4c1af!2sAustrija!5e0!3m2!1shr!2shr!4v1682890478856!5m2!1shr!2shr" width="400" height="300" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
             <div className="kontakt-holder">
                 <h3>Kontaktiraj nas!</h3> <br />
                 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className="form-holder-contact" onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-row">
                         <div className="form-column">
-                        <label for="first-name">Vaše ime:</label>
-                        <input type="text" id="first-name" name="first-name" placeholder="Upišite vaše ime..." {...register("userFirstName")} required />
+                        <label className="label-contact" htmlFor="first-name">Vaše ime</label>
+                        <input className="input-contact" type="text" id="first-name" name="first-name" placeholder="..." {...register('userName')} required/>
                         </div>
-                        <div className="form-column" style={{marginBottom: "10px"}}>
-                        <label for="last-name">Vaše prezime:</label>
-                        <input type="text" id="last-name" name="last-name" placeholder="Upišite vaše prezime..." {...register("userLastName")} required/>
+                        <div className="form-column">
+                        <label htmlFor="last-name">Vaše prezime</label>
+                        <input style={{marginTop: '6px'}} className="input-contact" type="text" id="last-name" name="last-name" placeholder="..." {...register('userLastName')} required/>
                         </div>
                     </div>
                     <div className="form-row">
                         <div className="form-column">
-                        <label for="contact-email">Vaš kontakt email:</label>
-                        <input type="email" id="contact-email" name="contact-email" placeholder="Upišite vašu kontaktu email-adresu...." {...register("userEmail")} required/>
+                        <label htmlFor="contact-number">Vaš kontakt broj</label>
+                        <input className="input-contact" type="tel" id="contact-number" name="contact-number" placeholder="..." {...register('userNumber')} required/>
                         </div>
-                        <div className="form-column" style={{marginBottom: "6px"}}>
-                        <label for="contact-number">Vaš kontakt broj</label>
-                        <input type="tel" id="contact-number" name="contact-number" placeholder="Upišite vaš kontakt broj..." {...register("userNumber")} required/>
+                        <div className="form-column">
+                        <label htmlFor="contact-email">Vaša kontakt email adresa</label>
+                        <input className="input-contact" type="email" id="contact-email" name="contact-email" placeholder="..." {...register('userEmail')} required/>
                         </div>
-                        </div>
-                    <div className="form-row">
-                        <label for="contact-message">Vaša poruka:</label>
-                        <textarea id="contact-message" name="contact-message" placeholder="Upišite vašu poruku..." {...register("userMessage")}required></textarea>
                     </div>
                     <div className="form-row">
-                        <br />
-                        <button type="submit">Pošalji upit!</button>
+                        <label htmlFor="contact-message">Vaš upit</label>
+                        <textarea className="input-contact" id="contact-message" name="contact-message" placeholder="..." {...register('userMessage')} required></textarea>
+                    </div>
+                    <div className="form-row">
+                        <button type="submit">Pošalji upit</button>
                     </div>
                 </form>
             </div>
+            </div>
+            <br /><br />
+
+        
         </div>
 
         </div>

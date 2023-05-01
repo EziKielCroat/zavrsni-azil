@@ -1,11 +1,12 @@
 
 
-import './ComponentsAssets/Login.css'
+
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from 'react-router-dom';
 
 import { collection, query, where, getDocs } from "firebase/firestore"; 
 import {db} from '../firebase.js';
+import './ComponentsAssets/Login.css';
 
 function Login() {
     const { register, handleSubmit } = useForm();
