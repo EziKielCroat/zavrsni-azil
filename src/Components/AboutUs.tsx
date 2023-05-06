@@ -10,7 +10,16 @@ import {db} from '../firebase.js';
 function AboutUs() {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
+    const checkAdmin = () => {
+        if(userInfo.userType == "admin") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     const onSubmit = async (data) => {
         // Upiti se spremaju na firebase za administratore da vide
         await addDoc(collection(db, "Upiti"), data); 
@@ -28,7 +37,7 @@ function AboutUs() {
                 <button onClick={() => {navigate('/')}}><li>Home</li></button>
                 <button onClick={() => {navigate('/donations')}}><li>Donacije</li></button>
                 <button onClick={() => {navigate('/notifications')}}><li>Obavijesti</li></button>
-                <button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>
+                {checkAdmin() ? (<button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>) : ( <></>)}
             </ul>
         </nav>
 
