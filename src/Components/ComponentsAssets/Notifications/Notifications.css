@@ -101,3 +101,26 @@
     margin: 0;
     margin-left: 55px;
 }
+
+.nevaznaObavijest {
+    height: fit-content;
+    max-width:  50vh;
+    background-color: #1a1a1a;
+    text-align: left;
+    text-indent: 10px;
+    border-radius: 6px;
+    margin-top: 20px;   
+    word-wrap: break-word;
+    white-space: normal;
+    margin: 2em;
+}
+
+.nevaznaObavijest p {
+    padding: 1em;
+}
+
+.nevaznaObavijestHeader {
+    background-color: darkgreen;
+    border-radius: 6px 6px 0 0;
+    height: fit-content;
+}

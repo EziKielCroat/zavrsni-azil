@@ -12,7 +12,6 @@ import {db} from '../firebase.js';
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
         registerUser(data);
     };
 
@@ -36,11 +35,9 @@ import {db} from '../firebase.js';
     }
 
     const checkForDuplicateUser = async (data) => {
-        console.log(data.userEmail);
         const q = query(collection(db, "Users"), where("userEmail", "==", data.userEmail));
 
         const querySnapshot = await getDocs(q);
-        console.log(querySnapshot.empty);
         if(querySnapshot.empty) {
             return false; // user does not exist
         } else {

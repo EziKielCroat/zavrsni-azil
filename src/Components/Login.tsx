@@ -12,7 +12,6 @@ function Login() {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const onSubmit = (data) => {
-        console.log(data);
         checkUser(data);
     }
 

@@ -1,6 +1,6 @@
 
 
-import '../ComponentsAssets/Notifications.css';
+import './Notifications.css';
 
 function ShowImportantNotifications(props) {
     const {importantNotifications} = props;
@@ -9,7 +9,6 @@ function ShowImportantNotifications(props) {
     return(
         <div className="importantNotifications">
             {importantNotifications.map(el => {
-                console.log(el)
                 return(
                     <div key={el.id} className="vaznaObavijest">
                         <div className="vaznaObavijestHeader">

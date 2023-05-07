@@ -1,7 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from 'react-router-dom';
-import './ComponentsAssets/AboutUs.css';
+import './ComponentsAssets/AboutUs/AboutUs.css';
 
 
 import { collection, addDoc} from "firebase/firestore"; 

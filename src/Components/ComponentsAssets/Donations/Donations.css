@@ -1,0 +1,26 @@
+
+.nova-donacija {
+    display: block;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.trazimo-container {
+    margin: 2em;
+}
+
+.trazimo-container h2 {
+    text-align: initial;
+}
+
+.nudise-container {
+    margin: 2em;
+}
+
+.nudise-container h2 {
+    text-align: initial;
+}
+
+.thead {
+    border-bottom: 1px solid white;
+}

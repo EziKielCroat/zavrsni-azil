@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import ModalComponent from './ComponentsAssets/ModalComponent.js';
-import ShowImportantNotifications from "./ComponentsAssets/ShowImportantNotifications.js";
-import ShowNotImportantNotifications from "./ComponentsAssets/ShowNotImportantNotifications.js";
-import './ComponentsAssets/Notifications.css';
+import ModalComponent from './ComponentsAssets/Notifications/ModalComponent.js';
+import ShowImportantNotifications from "./ComponentsAssets/Notifications/ShowImportantNotifications.js";
+import ShowNotImportantNotifications from "./ComponentsAssets/Notifications/ShowNotImportantNotifications.js";
+import './ComponentsAssets/Notifications/Notifications.css';
 
 import { doc, collection, addDoc, getDoc} from "firebase/firestore"; 
 import {db} from '../firebase.js';
@@ -68,9 +68,6 @@ function Notifications() {
             console.error('Error getting document:', error);
           });
     }, []);
-      
-    useEffect(() => {}, [importantNotifications]);
-    useEffect(() => {console.log(notImportantNotifications)}, [notImportantNotifications]);
 
     return(
     <div className="container">
@@ -80,6 +77,7 @@ function Notifications() {
             <ul className="nav-stranice">
                 <button onClick={() => {navigate('/')}}><li>Home</li></button>
                 <button onClick={() => {navigate('/donations')}}><li>Donacije</li></button>
+                <button onClick={() => {navigate('/aboutus')}}><li>O nama</li></button>
                 {checkAdmin() ? (<button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>) : ( <></>)}
             </ul>
         </nav>
@@ -87,7 +85,7 @@ function Notifications() {
             {modalComponentOn && <ModalComponent removeComponent={removeComponent}></ModalComponent>}
             {importantNotifications.length > 0 && <ShowImportantNotifications importantNotifications={importantNotifications}></ShowImportantNotifications>}    
             {notImportantNotifications.length > 0 && <ShowNotImportantNotifications notImportantNotifications={notImportantNotifications}></ShowNotImportantNotifications>}    
-
+            
     </div>
     )
 }

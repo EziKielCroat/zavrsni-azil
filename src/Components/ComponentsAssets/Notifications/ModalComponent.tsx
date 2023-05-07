@@ -3,7 +3,7 @@ import './Notifications.css';
 import { useForm } from "react-hook-form";
 
 import { doc, collection, updateDoc, arrayUnion} from "firebase/firestore"; 
-import {db} from '../../firebase.js';
+import {db} from '../../../firebase.js';
 
 function ModalComponent(props) {
     const { removeComponent } = props;
