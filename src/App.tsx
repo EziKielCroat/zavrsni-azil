@@ -7,10 +7,20 @@ import Register from './Components/Register';
 import AboutUs from './Components/AboutUs';
 import Notifications from './Components/Notifications';
 import Donations from './Components/Donations';
+import Dashboard from './Components/Dashboard';
 
 function RequireAuth({ children }) {
-  const authed = localStorage.getItem("userLogged"); // zamjenit ovdi sa localstorage kako ces upisivat jel korisnik ulogiran
+  const authed = localStorage.getItem("userLogged"); 
   return authed ? children : <Navigate to="/login" replace />;
+}
+
+function RequireAdmin({children}) {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  if(userInfo.userType == "admin") {
+    return children
+  } else {
+    return <Navigate to="/login" replace />
+  }
 }
 
 function App() {
@@ -22,6 +32,7 @@ function App() {
       <Route path="/aboutus" element={<RequireAuth><AboutUs /></RequireAuth>}/>
       <Route path="/donations" element={<RequireAuth><Donations /></RequireAuth>}/>
       <Route path="/notifications" element={<RequireAuth><Notifications /></RequireAuth>} />
+      <Route path="/dashboard" element={<RequireAdmin><Dashboard /></RequireAdmin>} />
       {/* napravit sljedece donacije ili obavijesti koji je jednostavniji<Route path="/" element={<AboutUs />}/>*/}
 
       <Route path="/login" element={<Login></Login>} />

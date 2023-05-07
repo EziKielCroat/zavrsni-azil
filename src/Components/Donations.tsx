@@ -47,7 +47,6 @@ function Donations() {
             <button className="nova-donacija" onClick={() => {novaDonacija()}}> Nova donacija</button>
             {modalComponentOn && <ModalComponent removeComponent={removeComponent}></ModalComponent>}
             <div className="donations-show">
-            {/* trazimo, nudise, donirano sve ovdi ide. trazise mora imat za korisnika da moze donirat*/}
             <Trazimo></Trazimo>
             <NudiSe></NudiSe>
             <Donirano></Donirano>

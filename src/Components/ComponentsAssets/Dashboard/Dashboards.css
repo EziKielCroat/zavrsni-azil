@@ -1,0 +1,18 @@
+
+.side-nav {
+    position: fixed;
+    height: 100vh;
+    width: fit-content;
+    padding: 1em;
+    background: #1a1a1a;
+    margin-top:1em;
+}
+
+.side-nav button {
+    display: block;
+    margin-top:3em;
+}
+
+.name-input {
+    width: 50%;
+}
