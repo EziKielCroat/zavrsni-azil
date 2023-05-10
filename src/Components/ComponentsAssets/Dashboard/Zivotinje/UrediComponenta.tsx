@@ -11,6 +11,7 @@ function UrediComponenta(props) {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     const onSubmit = async (data) => {
+        console.log(data);
         try {
             const index = zivotinje.findIndex((zivotinja) => zivotinja.id === el.id);
         
@@ -54,6 +55,9 @@ function UrediComponenta(props) {
                 <label htmlFor="name">Ime:</label> <br />
                 <input type="text" id="name-input" name="name" required {...register('animalName')} defaultValue={el.animalName}/>
                 <br/>
+                <br />
+                <label htmlFor="taken">Udomljen/a: </label> <br />
+                <input type="checkbox" required {...register('animalAdopted')}/> <br />
                 <label htmlFor="type">Vrsta</label> <br />
                 <select name="type" id="type" required {...register('animalType')} defaultValue={el.animalType}>
                     <option value="Pas">Pas</option>

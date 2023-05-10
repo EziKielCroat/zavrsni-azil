@@ -1,15 +1,16 @@
 
+import PrikaziZivotinju from "./PrikaziZivotinju";
 
 function PrikaziZivotinje(props) {
     const {popis} = props
 
+    console.log(popis);
+
     return(
-        <div className="zivotinje">
-            <div className="zivotinja">
-                {popis.map((el) => {
-                    {/*iden prvo dodat nacin dodavanja zivotinja pacu onda prikazivanje*/}
-                })}
-            </div>
+        <div className="popis-container">
+                {popis.map((zivotinja, index) => (
+                 <PrikaziZivotinju key={index} zivotinja={zivotinja} popis={popis}/>
+                ))}
         </div>
     )
 }

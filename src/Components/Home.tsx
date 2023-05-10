@@ -13,14 +13,38 @@ function Home() {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const [sveZivotinje, setSveZivotinje] = useState([]);
 
-    useEffect(() => {
-        async function getZivotinje() {
-            const zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
-            const zivotinjeSnap = await getDoc(zivotinjeRef);
+    useEffect(() => {console.log(sveZivotinje)}, [sveZivotinje])
 
-            console.log(zivotinjeSnap.data().popis);
-            setSveZivotinje(zivotinjeSnap.data().popis);
+    async function getZivotinje() {
+        try {
+            let zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
+            let zivotinjeSnap = await getDoc(zivotinjeRef);
+    
+            if (zivotinjeSnap.exists()) {
+                console.log(zivotinjeSnap.data().popis);
+                setSveZivotinje(zivotinjeSnap.data().popis);
+            }
+        } catch (error) {
+            console.error(error);
         }
+    }
+
+    async function getZivotinjeHelper() {
+        try {
+            let zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
+            let zivotinjeSnap = await getDoc(zivotinjeRef);
+    
+            if (zivotinjeSnap.exists()) {
+                console.log(zivotinjeSnap.data().popis);
+                return zivotinjeSnap.data().popis;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    useEffect(() => {
         getZivotinje();
     }, []);
 
@@ -31,6 +55,44 @@ function Home() {
             return false;
         }
     }
+
+    const filtrirajStatusUdomljenosti = async (event) => {
+        console.log(event.target.value);
+        if(sveZivotinje.length > 0) {
+            if(event.target.value == "udomljeni") {
+                const popisZivotnja = await getZivotinjeHelper();
+                const filtrirane = popisZivotnja.filter(animal => animal.animalAdopted === true);
+                setSveZivotinje(filtrirane);
+            } else if(event.target.value == "neudomljeni") {
+                const popisZivotnja = await getZivotinjeHelper();
+                const filtrirane = popisZivotnja.filter(animal => animal.animalAdopted === false);
+                setSveZivotinje(filtrirane);
+            }else if(event.target.value == "svi") {
+                getZivotinje();
+            }else {
+                console.error("Nemogu dobiti vrijednost iz selecta.");
+            }
+        }
+    }
+
+    const filtrirajVrstaZivotinje = async(event) => {
+        if(sveZivotinje.length > 0) {
+            if(event.target.value == "macke") {
+                const popisZivotnja = await getZivotinjeHelper();
+                const filtrirane = popisZivotnja.filter(animal => animal.animalType === "macka");
+                setSveZivotinje(filtrirane);
+            } else if(event.target.value == "psi") {
+                const popisZivotnja = await getZivotinjeHelper();
+                const filtrirane = popisZivotnja.filter(animal => animal.animalType === "pas");
+                setSveZivotinje(filtrirane);
+            }else if(event.target.value == "svi") {
+                getZivotinje();
+            }else {
+                console.error("Nemogu dobiti vrijednost iz selecta.");
+            }
+        }
+    }
+
     return(
         <div>
             <div className="container">
@@ -50,7 +112,7 @@ function Home() {
                         <h3>Filtriraj:</h3>
                         <div className="filter-1">
                             <h4>Po statusu udomljenosti</h4>
-                            <select name="filter-1" id="filter-1" onChange={() => {filtrirajStatusUdomljenosti()}}>
+                            <select name="filter-1" id="filter-1" onChange={() => {filtrirajStatusUdomljenosti(event)}}>
                                 <option value="svi">Svi</option>
                                 <option value="udomljeni">Udomljeni</option>
                                 <option value="neudomljeni">Neudomljeni</option>
@@ -58,10 +120,10 @@ function Home() {
                         </div>
                         <div className="filter-2">
                             <h4>Po vrsti životinje</h4>
-                            <select name="filter-2" id="filter-2" onChange={() => {filtrirajVrstaZivotinje()}}>
+                            <select name="filter-2" id="filter-2" onChange={() => {filtrirajVrstaZivotinje(event)}}>
                                 <option value="svi">Svi</option>
                                 <option value="macke">Mačke</option>
-                                <option value="psi">Udomljeni</option>
+                                <option value="psi">Psi</option>
                             </select>
                         </div>
                     </div>

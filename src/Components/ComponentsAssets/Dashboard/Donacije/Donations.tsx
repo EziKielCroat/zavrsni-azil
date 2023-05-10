@@ -14,14 +14,6 @@ function Donations() {
     const [modalComponentOn, setModalComponentOn] = useState(false);
     const navigate = useNavigate();
 
-    const checkAdmin = () => {
-        if(userInfo.userType == "admin") {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     const novaDonacija = () => {
         setModalComponentOn(true);
     }
@@ -31,8 +23,6 @@ function Donations() {
     }
 
     return(
-        <div className="container">
-
          <div className="donations-container-admin">
             <button className="nova-donacija" onClick={() => {novaDonacija()}}> Nova donacija</button>
             {modalComponentOn && <ModalComponent removeComponent={removeComponent}></ModalComponent>}
@@ -42,7 +32,6 @@ function Donations() {
             <Donirano></Donirano>
             </div>
          </div>
-        </div>
     )
 }
 

@@ -1,11 +1,12 @@
 
 .side-nav {
     position: fixed;
-    height: 100vh;
+    height: 60vh;
     width: fit-content;
     padding: 1em;
     background: #1a1a1a;
     margin-top:1em;
+    border-radius: 10px;
 }
 
 .side-nav button {
@@ -18,6 +19,6 @@
 }
 
 .donations-container-admin {
-    margin-left: 50vh;
-    margin-top: 25vh;
+    margin-left: 40vh;
+    margin-top: 0.5vh;
 }

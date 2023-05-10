@@ -1,0 +1,42 @@
+.popis-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 2em;
+    white-space: nowrap;
+    padding-left: 15em;
+}
+  
+.popis-card {
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 1em;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1; /* Add a z-index value */
+    left: 20px;
+}
+
+.popis-card .details {
+    display: inline-block;
+}
+  
+.popis-card .details span {
+    color: grey;
+}
+
+.popis-card label {
+    display: inline-block;
+}
+
+.popis-card input {
+    display: inline-block;
+}
+
+.abc {
+    margin-top: 0px !important;
+}

@@ -1,5 +1,9 @@
 
 .filter-zivotinja {
-    position: absolute;
+    position: fixed;
+    top: 40%; /* adjust as needed */
+    left: 0;
+    transform: translateY(-50%); /* adjust as needed */
+    float: left;
     margin: 2em;
 }

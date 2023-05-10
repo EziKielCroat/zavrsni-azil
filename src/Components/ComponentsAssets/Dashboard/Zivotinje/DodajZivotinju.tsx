@@ -11,6 +11,7 @@ function DodajZivotinju(props) {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     const onSubmit = async (data) => {
+        data.animalAdopted = false;
         const zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
         await updateDoc(zivotinjeRef, {popis: arrayUnion(data)});
 
@@ -35,6 +36,7 @@ function DodajZivotinju(props) {
                 <label htmlFor="name">Ime:</label> <br />
                 <input type="text" id="name-input" name="name" required {...register('animalName')}/>
                 <br/>
+
                 <label htmlFor="type">Vrsta</label> <br />
                 <select name="type" id="type" required {...register('animalType')}>
                     <option value="pas">Pas</option>

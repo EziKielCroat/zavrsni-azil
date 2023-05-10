@@ -35,6 +35,7 @@ function PopisZivotinja(props) {
                 <td>{el.animalType}</td>
                 <td>{el.animalDescription}</td>
                 <td>{el.animalAge}</td>
+                <td><input type="checkbox" disabled checked={el.animalTracked}/></td>
                 <td>{el.animalLastCheckup}</td>
                 <br />
                 <td><button onClick={() => {urediComponenta(el)}}>Uredi</button></td>
