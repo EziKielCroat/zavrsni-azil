@@ -5,6 +5,7 @@ import './ComponentsAssets/Dashboard/Dashboards.css';
 import {useState, useEffect} from 'react';
 import Zivotinje from './ComponentsAssets/Dashboard/Zivotinje/Zivotinje';
 import Donations from './ComponentsAssets/Dashboard/Donacije/Donations';
+import Notifications from './ComponentsAssets/Dashboard/Obavijesti/Notifications';
 
 function Dashboard () {
     const navigate = useNavigate();
@@ -60,6 +61,7 @@ function Dashboard () {
                 <div className="admin-main">
                 {prikaziZivotinje && <Zivotinje></Zivotinje>}
                 {prikaziDonacije && <Donations></Donations>}
+                {prikaziObavijesti && <Notifications></Notifications>}
                 </div>
         </div>
     )
