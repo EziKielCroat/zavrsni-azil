@@ -13,27 +13,7 @@ import {db} from '../../../../firebase.js';
 function Notifications() {
     const [modalComponentOn, setModalComponentOn] = useState(false);
     const [importantNotifications, setImportantNotifications] = useState([]);
-    const [notImportantNotifications, setnotImportantNotifications] = useState([]);
-
-    const { register, handleSubmit } = useForm();
-    const navigate = useNavigate();
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    
-    const checkAdmin = () => {
-        if(userInfo.userType == "admin") {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    const onSubmit = async (data) => {
-        // Upiti se spremaju na firebase za administratore da vide
-        await addDoc(collection(db, "Upiti"), data); 
-        
-        console.log("Upit uspješno poslan");
-        window.location.reload();
-    }
+    const [notImportantNotifications, setnotImportantNotifications] = useState([]);  
 
     const dodajObavijest = () => {
         setModalComponentOn(true);
@@ -59,8 +39,7 @@ function Notifications() {
       
         getDoc(doc2).then((docSnapshot) => {
             if (docSnapshot.exists()) {
-              let data = docSnapshot.data();
-              setnotImportantNotifications(data.nevazneObavijest);
+              setnotImportantNotifications(docSnapshot.data().nevazneObavijest);
             } else {
               console.error('Nevazne obavijesti document ne postoji');
             }

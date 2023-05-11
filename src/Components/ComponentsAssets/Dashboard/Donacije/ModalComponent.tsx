@@ -2,13 +2,12 @@
 import '.././Dashboards.css';
 import { useForm } from "react-hook-form";
 
-import { doc, collection, updateDoc, arrayUnion} from "firebase/firestore"; 
+import { doc, updateDoc, arrayUnion} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
 
 function ModalComponent(props) {
     const { removeComponent } = props;
     const { register, handleSubmit } = useForm();
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     const onSubmit = async (data) => {
         trazimoDodaj(data);
@@ -17,6 +16,7 @@ function ModalComponent(props) {
     const trazimoDodaj = async (data) => {
         const id = Math.floor(Math.random() * 10000);
         data.id = id;
+
         const trazimoRef = doc(db, "Donacije", "trazimo");
         await updateDoc(trazimoRef, {trazimoPopis: arrayUnion(data)});
         window.location.reload();
@@ -25,6 +25,7 @@ function ModalComponent(props) {
     const nudiseDodaj = async (data) => {
         const id = Math.floor(Math.random() * 10000);
         data.id = id;
+        
         const nudiseRef = doc(db, "Donacije", "nudise");
         await updateDoc(nudiseRef, {nudisePopis: arrayUnion(data)});
         window.location.reload();

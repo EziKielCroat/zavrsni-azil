@@ -7,6 +7,7 @@ function PopisZivotinja(props) {
     const {zivotinje} = props;
     const [prikaziUrediComponentu, setPrikaziUrediComponentu] = useState(false);
     const [elCurrent, setEl] = useState({});
+    
     const urediComponenta = (el) => {
       setEl(el);
       setPrikaziUrediComponentu(true);

@@ -1,14 +1,13 @@
 
-import '../Dashboards.css'
 import { useForm } from "react-hook-form";
-
-import { doc, collection, updateDoc, arrayUnion} from "firebase/firestore"; 
+import { doc, updateDoc, arrayUnion} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
+
+import '../Dashboards.css'
 
 function DodajZivotinju(props) {
     const { removeComponent } = props;
     const { register, handleSubmit } = useForm();
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     const onSubmit = async (data) => {
         data.animalAdopted = false;
@@ -16,14 +15,6 @@ function DodajZivotinju(props) {
         await updateDoc(zivotinjeRef, {popis: arrayUnion(data)});
 
         window.location.reload();
-    }
-
-    const checkAdmin = () => {
-        if(userInfo.userType == "admin") {
-            return true;
-        } else {
-            return false;
-        }
     }
     
     return(

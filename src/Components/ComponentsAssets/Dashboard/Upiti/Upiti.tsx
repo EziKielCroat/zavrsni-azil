@@ -1,10 +1,11 @@
 
 
 import {useEffect, useState} from 'react';
-import { doc, collection, updateDoc, arrayUnion, getDocs} from "firebase/firestore"; 
+import { collection, getDocs} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
-import PrikaziUpit from './PrikaziUpiti.js';
+
 import './Upiti.css';
+import PrikaziUpit from './PrikaziUpiti.js';
 
 function Upiti() {
     const [upiti, setUpiti] = useState([]);

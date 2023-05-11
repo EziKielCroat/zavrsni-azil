@@ -2,7 +2,7 @@
 import './Donations.css';
 import { useForm } from "react-hook-form";
 
-import { doc, collection, updateDoc, arrayUnion} from "firebase/firestore"; 
+import { doc, updateDoc, arrayUnion} from "firebase/firestore"; 
 import {db} from '../../../firebase.js';
 
 function ModalComponent(props) {
@@ -12,10 +12,8 @@ function ModalComponent(props) {
 
     const onSubmit = async (data) => {
         if(userInfo.userType == "admin") {
-            // admin trazimo popis
             trazimoDodaj(data);
         } else {
-            // normalni korisnik
             nudiseDodaj(data);
         }
     }
@@ -23,7 +21,7 @@ function ModalComponent(props) {
     const trazimoDodaj = async (data) => {
         const id = Math.floor(Math.random() * 10000);
         data.id = id;
-        console.log(data);
+
         const trazimoRef = doc(db, "Donacije", "trazimo");
         await updateDoc(trazimoRef, {trazimoPopis: arrayUnion(data)});
         window.location.reload();
@@ -32,7 +30,7 @@ function ModalComponent(props) {
     const nudiseDodaj = async (data) => {
         const id = Math.floor(Math.random() * 10000);
         data.id = id;
-        console.log(data);
+        
         const nudiseRef = doc(db, "Donacije", "nudise");
         await updateDoc(nudiseRef, {nudisePopis: arrayUnion(data)});
         window.location.reload();

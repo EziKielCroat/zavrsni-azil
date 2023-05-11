@@ -20,8 +20,9 @@ function ShowNotImportantNotifications(props) {
 
         await Promise.all([
             updateDoc(sveObavijestiRef, { nevazneObavijest: sveObavijesti }),
-          ]);
-        console.log("Uspješno izbrisana akcija");
+        ]);
+
+        console.log("Uspješno izbrisana obavijest");
     }
     
     return(

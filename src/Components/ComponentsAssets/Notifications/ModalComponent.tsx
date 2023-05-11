@@ -2,7 +2,7 @@
 import './Notifications.css';
 import { useForm } from "react-hook-form";
 
-import { doc, collection, updateDoc, arrayUnion} from "firebase/firestore"; 
+import { doc, updateDoc, arrayUnion} from "firebase/firestore"; 
 import {db} from '../../../firebase.js';
 
 function ModalComponent(props) {
@@ -46,7 +46,6 @@ function ModalComponent(props) {
                 <textarea id="message-input" minLength={10} maxLength={200} name="message" {...register('notificationMessage')}></textarea>
                 <br/>
                 <label htmlFor="checkbox">Važno:</label>
-            
                 {checkAdmin() ? (<input type="checkbox" id="checkbox-input" name="checkbox" {...register('notificationImportant')}/>) : ( <input type="checkbox" id="checkbox-input" name="checkbox" disabled {...register('notificationImportant')}/>)}
                 <br/>
                 <button id="submit-btn" type="submit">Submit</button>

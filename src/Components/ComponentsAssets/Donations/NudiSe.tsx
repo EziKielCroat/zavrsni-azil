@@ -16,8 +16,6 @@ function NudiSe () {
         getNudiSe();    
     },[]);
 
-    useEffect(() => {console.log(nudiSe)},[nudiSe]);
-
     return(
         <div className="nudise-container">
             <h2>Nudi se:</h2>

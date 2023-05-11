@@ -5,7 +5,6 @@ import './Notifications.css';
 function ShowImportantNotifications(props) {
     const {importantNotifications} = props;
     
-    console.log(importantNotifications);
     return(
         <div className="importantNotifications">
             {importantNotifications.map(el => {

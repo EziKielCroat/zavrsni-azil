@@ -2,7 +2,7 @@
 import './Notifications.css';
 import { useForm } from "react-hook-form";
 
-import { doc, collection, updateDoc, arrayUnion} from "firebase/firestore"; 
+import { doc, updateDoc, arrayUnion} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
 
 function ModalComponent(props) {
@@ -12,15 +12,19 @@ function ModalComponent(props) {
 
     const onSubmit = async (data) => {
         if(!data.notificationImportant) {
+
             data.notificationImportant = false;
             const nevazneObavijestiRef = doc(db, "Obavijesti", "nevazne-obavijesti");
             await updateDoc(nevazneObavijestiRef, {nevazneObavijest: arrayUnion(data)});
             window.location.reload();
+            
         } else {
+
             data.notificationImportant = true;
             const vazneObavijestiRef = doc(db, "Obavijesti", "vazne-obavijesti");
             await updateDoc(vazneObavijestiRef, {vazneObavijesti: arrayUnion(data)});
             window.location.reload();
+            
         }
     }
 

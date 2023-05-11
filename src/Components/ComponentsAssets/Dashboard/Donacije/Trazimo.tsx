@@ -1,6 +1,6 @@
 
 import {useEffect, useState} from 'react';
-import { doc, collection, updateDoc, arrayUnion, getDoc} from "firebase/firestore"; 
+import { doc, getDoc} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
 
 import PrikazTrazimo from './PrikazTrazimo.js';

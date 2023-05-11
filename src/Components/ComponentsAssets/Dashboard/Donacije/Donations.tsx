@@ -1,18 +1,15 @@
 
-
-
-import '../Dashboards.css';
 import ModalComponent from './ModalComponent';
 import Trazimo from './Trazimo';
 import NudiSe from './NudiSe';
 import Donirano from './Donirano';
-import { useNavigate } from 'react-router-dom';
+
 import { useState } from "react";
 
+import '../Dashboards.css';
+
 function Donations() {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const [modalComponentOn, setModalComponentOn] = useState(false);
-    const navigate = useNavigate();
 
     const novaDonacija = () => {
         setModalComponentOn(true);

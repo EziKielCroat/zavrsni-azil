@@ -2,7 +2,7 @@
 import '../Dashboards.css';
 import { useForm } from "react-hook-form";
 
-import { doc, collection, updateDoc, arrayUnion, getDoc} from "firebase/firestore"; 
+import { doc, updateDoc} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
 
 function UrediComponenta(props) {
@@ -11,12 +11,11 @@ function UrediComponenta(props) {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     const onSubmit = async (data) => {
-        console.log(data);
         try {
             const index = zivotinje.findIndex((zivotinja) => zivotinja.id === el.id);
         
             if (index === -1) {
-              console.log("Object not found in array");
+              console.error("Životinja nije nađena u zivotinje");
               return;
             }
         
@@ -33,18 +32,10 @@ function UrediComponenta(props) {
             console.log("Uspješno uređeno");
             window.location.reload();
           } catch (error) {
-            console.error("pogreska : ", error);
+            console.error("Pogreška pri updejtanju popisa zivotinja: ", error);
           }
     }
 
-    const checkAdmin = () => {
-        if(userInfo.userType == "admin") {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
     return(
         <div id="my-modal" className="modal">
         <div id="modal-content" className="modal-content">

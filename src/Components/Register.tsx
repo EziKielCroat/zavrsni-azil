@@ -2,7 +2,7 @@
 
 import './ComponentsAssets/Register.css'
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore"; 
 import {db} from '../firebase.js';
@@ -20,7 +20,7 @@ import {db} from '../firebase.js';
         try {
             const isDuplicateUser = await checkForDuplicateUser(data);
             if(!isDuplicateUser) {
-                await addUser(data);
+                addUser(data);
                 const userInfo = JSON.stringify(data);
     
                 localStorage.setItem("userLogged", true);
@@ -39,9 +39,9 @@ import {db} from '../firebase.js';
 
         const querySnapshot = await getDocs(q);
         if(querySnapshot.empty) {
-            return false; // user does not exist
+            return false;
         } else {
-            return true; // user exists
+            return true;
         }
     }
 
@@ -73,7 +73,7 @@ import {db} from '../firebase.js';
                     <option value="user">Korisnik</option>
                     <option value="admin">Administrator</option>
                 </select> <br /> <br />
-                <button type="sub   mit">Registriraj se</button> <br /> <br />
+                <button type="submit">Registriraj se</button> <br /> <br />
                 
                 <button onClick={() => {navigate('/login')}}>Imaš račun? Ulogiraj se!</button>
             </form>

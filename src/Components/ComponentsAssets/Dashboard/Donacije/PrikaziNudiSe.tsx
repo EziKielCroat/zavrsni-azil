@@ -1,5 +1,5 @@
 
-import {doc, getDoc, setDoc, updateDoc, deleteDoc} from 'firebase/firestore';
+import {doc, getDoc, updateDoc} from 'firebase/firestore';
 import {db} from '../../../../firebase.js';
 
 function PrikazTrazimo (props) {
@@ -17,8 +17,8 @@ function PrikazTrazimo (props) {
           const objectsToDelete = nudiSePopis.filter((object) => object.id == id);
 
           objectsToDelete.forEach((object) => {
-          const index = nudiSePopis.indexOf(object);
-          nudiSePopis.splice(index, 1);
+            const index = nudiSePopis.indexOf(object);
+            nudiSePopis.splice(index, 1);
           });
       
           const doniranoRef = doc(db, 'Donacije', 'donirano');
@@ -32,10 +32,10 @@ function PrikazTrazimo (props) {
             updateDoc(doniranoRef, { doniranoPopis: updatedDoniranoPopis }),
           ]);
       
-          console.log('Pomaknuto u donirano');
+          console.log('Uspješno prihvaćena donacija');
           window.location.reload();
         } catch (error) {
-          console.error('Error moving object:', error);
+          console.error('Pogreška pri prihvaćenju donacije: ', error);
         }
     }
 

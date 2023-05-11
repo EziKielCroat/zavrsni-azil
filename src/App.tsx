@@ -34,7 +34,6 @@ function App() {
       <Route path="/notifications" element={<RequireAuth><Notifications /></RequireAuth>} />
       <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
 
-      
       <Route path="/dashboard" element={<RequireAdmin><Dashboard /></RequireAdmin>} />
 
       <Route path="/login" element={<Login></Login>} />

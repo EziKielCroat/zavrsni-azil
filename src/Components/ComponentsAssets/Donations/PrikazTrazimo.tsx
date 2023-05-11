@@ -1,5 +1,5 @@
 
-import {doc, getDoc, setDoc, updateDoc, deleteDoc} from 'firebase/firestore';
+import {doc, getDoc, updateDoc} from 'firebase/firestore';
 import {db} from '../../../firebase.js';
 
 function PrikazTrazimo (props) {
@@ -34,10 +34,10 @@ function PrikazTrazimo (props) {
             updateDoc(doniranoRef, { doniranoPopis: updatedDoniranoPopis }),
           ]);
       
-          console.log('Pomaknuto u donirano');
+          console.log('Donacije pomaknuta u donirano');
           window.location.reload();
         } catch (error) {
-          console.error('Error moving object:', error);
+          console.error('Pogreška pri micanju donacije: ', error);
         }
     }
 

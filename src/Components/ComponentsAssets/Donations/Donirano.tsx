@@ -16,8 +16,6 @@ function Donirano () {
         getDonirano();    
     },[]);
 
-    useEffect(() => {console.log(donirano)},[donirano]);
-
     return(
         <div className="nudise-container">
             <h2>Donirano:</h2>

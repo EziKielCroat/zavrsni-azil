@@ -1,6 +1,6 @@
 
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ComponentsAssets/AboutUs/AboutUs.css';
 
 
@@ -21,7 +21,6 @@ function AboutUs() {
     }
     
     const onSubmit = async (data) => {
-        // Upiti se spremaju na firebase za administratore da vide
         await addDoc(collection(db, "Upiti"), data); 
         
         console.log("Upit uspješno poslan");
@@ -93,10 +92,7 @@ function AboutUs() {
             </div>
             </div>
             <br /><br />
-
-        
         </div>
-
         </div>
     )
 }

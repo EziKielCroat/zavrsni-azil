@@ -17,8 +17,8 @@ function PrikaziDonirano(props) {
           const objectsToDelete = doniranoPopis.filter((object) => object.id == id);
 
           objectsToDelete.forEach((object) => {
-          const index = doniranoPopis.indexOf(object);
-          doniranoPopis.splice(index, 1);
+            const index = doniranoPopis.indexOf(object);
+            doniranoPopis.splice(index, 1);
           });
       
           const trazimoRef = doc(db, 'Donacije', 'trazimo');
@@ -32,10 +32,10 @@ function PrikaziDonirano(props) {
             updateDoc(trazimoRef, { trazimoPopis: updatedTrazimoPopis }),
           ]);
       
-          console.log('Pomaknuto u donirano');
+          console.log('Uspješno ponovljena donacije');
           window.location.reload();
         } catch (error) {
-          console.error('Error moving object:', error);
+          console.error('Pogreška pri ponavljaju donacije:', error);
         }
     }
     
@@ -63,7 +63,7 @@ function PrikaziDonirano(props) {
           console.log('Uspješno izbrisano');
           window.location.reload();
         } catch (error) {
-          console.error('Error moving object:', error);
+          console.error('Pogreška pri brisanju: ', error);
         }
     }
 

@@ -6,7 +6,6 @@ function PrikazTrazimo (props) {
     const {trazimo} = props;
 
     const donirano = async (event) => {
-      // tribalo mi je onako uru ipo za ovu funkciju cisto sumljan da cu je komentirat
       const id = event.target.id;
       try {
           const trazimoRef = doc(db, 'Donacije', 'trazimo');
@@ -33,15 +32,16 @@ function PrikazTrazimo (props) {
             updateDoc(doniranoRef, { doniranoPopis: updatedDoniranoPopis }),
           ]);
       
-          console.log('Pomaknuto u donirano');
+          console.log('Element je uspješno donirano.');
           window.location.reload();
         } catch (error) {
-          console.error('Error moving object:', error);
+          console.error('Pogreška pri micanju elementa u donirano:', error);
         }
     }
 
     const izbrisi =async (event) => {
       const id = event.target.id;
+
       try {
           const trazimoRef = doc(db, 'Donacije', 'trazimo');
           const trazimoDoc = await getDoc(trazimoRef);
@@ -59,10 +59,10 @@ function PrikazTrazimo (props) {
             updateDoc(trazimoRef, { trazimoPopis: trazimoPopis }),
           ]);
       
-          console.log('Pomaknuto u donirano');
+          console.log('Element uspješno izbrisan.');
           window.location.reload();
         } catch (error) {
-          console.error('Error moving object:', error);
+          console.error('Pogreška pri brisanju:', error);
         }
     }
 

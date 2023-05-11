@@ -1,9 +1,9 @@
 
 import { useNavigate } from 'react-router-dom';
-import './ComponentsAssets/Home.css';
 import {useState, useEffect} from 'react';
+import './ComponentsAssets/Home.css';
 
-import { doc, collection, addDoc, getDoc} from "firebase/firestore"; 
+import { doc, getDoc} from "firebase/firestore"; 
 import {db} from '../firebase.js';
 
 import PrikaziZivotinje from './ComponentsAssets/PopisZivotinja/PrikaziZivotinje.js';
@@ -13,15 +13,12 @@ function Home() {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const [sveZivotinje, setSveZivotinje] = useState([]);
 
-    useEffect(() => {console.log(sveZivotinje)}, [sveZivotinje])
-
     async function getZivotinje() {
         try {
-            let zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
-            let zivotinjeSnap = await getDoc(zivotinjeRef);
+            const zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
+            const zivotinjeSnap = await getDoc(zivotinjeRef);
     
             if (zivotinjeSnap.exists()) {
-                console.log(zivotinjeSnap.data().popis);
                 setSveZivotinje(zivotinjeSnap.data().popis);
             }
         } catch (error) {
@@ -31,11 +28,10 @@ function Home() {
 
     async function getZivotinjeHelper() {
         try {
-            let zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
-            let zivotinjeSnap = await getDoc(zivotinjeRef);
+            const zivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
+            const zivotinjeSnap = await getDoc(zivotinjeRef);
     
             if (zivotinjeSnap.exists()) {
-                console.log(zivotinjeSnap.data().popis);
                 return zivotinjeSnap.data().popis;
             }
         } catch (error) {
@@ -57,36 +53,48 @@ function Home() {
     }
 
     const filtrirajStatusUdomljenosti = async (event) => {
+
         if(sveZivotinje.length > 0) {
+
             if(event.target.value == "udomljeni") {
                 const popisZivotnja = await getZivotinjeHelper();
                 const filtrirane = popisZivotnja.filter(animal => animal.animalAdopted === true);
                 setSveZivotinje(filtrirane);
+
             } else if(event.target.value == "neudomljeni") {
+
                 const popisZivotnja = await getZivotinjeHelper();
                 const filtrirane = popisZivotnja.filter(animal => animal.animalAdopted === false);
                 setSveZivotinje(filtrirane);
             }else if(event.target.value == "svi") {
+
                 getZivotinje();
             }else {
                 console.error("Nemogu dobiti vrijednost iz selecta.");
             }
+
         }
     }
 
     const filtrirajVrstaZivotinje = async(event) => {
+
         if(sveZivotinje.length > 0) {
+
             if(event.target.value == "macke") {
+
                 const popisZivotnja = await getZivotinjeHelper();
                 const filtrirane = popisZivotnja.filter(animal => animal.animalType === "macka");
                 setSveZivotinje(filtrirane);
             } else if(event.target.value == "psi") {
+
                 const popisZivotnja = await getZivotinjeHelper();
                 const filtrirane = popisZivotnja.filter(animal => animal.animalType === "pas");
                 setSveZivotinje(filtrirane);
             }else if(event.target.value == "svi") {
+
                 getZivotinje();
             }else {
+
                 console.error("Nemogu dobiti vrijednost iz selecta.");
             }
         }

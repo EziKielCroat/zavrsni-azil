@@ -24,7 +24,9 @@ function ShowImportantNotifications(props) {
 
         await Promise.all([
             updateDoc(sveObavijestiRef, { vazneObavijesti: sveObavijesti }),
-          ]);
+        ]);
+
+        console.log('Uspješno obrisana obavijest');
     }
 
     return(

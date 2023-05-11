@@ -2,7 +2,7 @@
 
 
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { collection, query, where, getDocs } from "firebase/firestore"; 
 import {db} from '../firebase.js';

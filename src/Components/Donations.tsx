@@ -10,9 +10,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 function Donations() {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const [modalComponentOn, setModalComponentOn] = useState(false);
     const navigate = useNavigate();
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
     const checkAdmin = () => {
         if(userInfo.userType == "admin") {
@@ -45,7 +45,7 @@ function Donations() {
         </nav>
 
          <div className="donations-container">
-            <button className="nova-donacija" onClick={() => {novaDonacija()}}> Nova donacija</button>
+            <button className="nova-donacija" onClick={() => {novaDonacija()}}>Nova donacija</button>
             {modalComponentOn && <ModalComponent removeComponent={removeComponent}></ModalComponent>}
             <div className="donations-show">
             <Trazimo></Trazimo>

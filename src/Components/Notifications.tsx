@@ -1,13 +1,12 @@
 
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import ModalComponent from './ComponentsAssets/Notifications/ModalComponent.js';
 import ShowImportantNotifications from "./ComponentsAssets/Notifications/ShowImportantNotifications.js";
 import ShowNotImportantNotifications from "./ComponentsAssets/Notifications/ShowNotImportantNotifications.js";
 import './ComponentsAssets/Notifications/Notifications.css';
 
-import { doc, collection, addDoc, getDoc} from "firebase/firestore"; 
+import { doc, collection, getDoc} from "firebase/firestore"; 
 import {db} from '../firebase.js';
 
 function Notifications() {
@@ -15,7 +14,6 @@ function Notifications() {
     const [importantNotifications, setImportantNotifications] = useState([]);
     const [notImportantNotifications, setnotImportantNotifications] = useState([]);
 
-    const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     
@@ -25,14 +23,6 @@ function Notifications() {
         } else {
             return false;
         }
-    }
-
-    const onSubmit = async (data) => {
-        // Upiti se spremaju na firebase za administratore da vide
-        await addDoc(collection(db, "Upiti"), data); 
-        
-        console.log("Upit uspješno poslan");
-        window.location.reload();
     }
 
     const dodajObavijest = () => {
@@ -59,7 +49,7 @@ function Notifications() {
       
         getDoc(doc2).then((docSnapshot) => {
             if (docSnapshot.exists()) {
-              let data = docSnapshot.data();
+              const data = docSnapshot.data();
               setnotImportantNotifications(data.nevazneObavijest);
             } else {
               console.error('Nevazne obavijesti document ne postoji');

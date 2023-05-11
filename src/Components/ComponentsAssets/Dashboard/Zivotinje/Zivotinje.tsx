@@ -1,10 +1,11 @@
 
 import {useEffect, useState} from 'react';
-import { doc, collection, updateDoc, arrayUnion, getDoc} from "firebase/firestore"; 
+import { doc, getDoc} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
 
 import PopisZivotinja from './PopisZivotinja.js';
 import DodajZivotinju from './DodajZivotinju.js';
+
 function Zivotinje(props) {
     const [sveZivotinje, setSveZivotinje] = useState([]);
     const [prikaziDodajZivotinju, setPrikaziDodajZivotinju] = useState(false);
@@ -30,7 +31,6 @@ function Zivotinje(props) {
             {prikaziDodajZivotinju && <DodajZivotinju removeComponent={removeComponent}></DodajZivotinju>} 
             <br />
             <button onClick={() => {setPrikaziDodajZivotinju(true)}}>Dodaj novu životinju</button>
-            {/*popisZivotinja, UnosiZivotinje*/}
         </div>
     )
 } 

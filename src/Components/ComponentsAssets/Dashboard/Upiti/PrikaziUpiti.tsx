@@ -1,12 +1,12 @@
 
 
 import './Upiti.css';
-import { doc, deleteDoc, getDocs, collection, query, where} from "firebase/firestore"; 
+import { deleteDoc, getDocs, collection, query, where} from "firebase/firestore"; 
 import {db} from '../../../../firebase.js';
 
 function PrikaziUpit (props) {
 
-    const {upit, upiti} = props;
+    const {upit} = props;
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
