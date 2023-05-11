@@ -39,6 +39,7 @@ function Donations() {
                 <button onClick={() => {navigate('/')}}><li>Home</li></button>
                 <button onClick={() => {navigate('/aboutus')}}><li>O nama</li></button>
                 <button onClick={() => {navigate('/notifications')}}><li>Obavijesti</li></button>
+                <button onClick={() => {navigate('/settings')}}><li>Postavke računa</li></button>
                 {checkAdmin() ? (<button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>) : ( <></>)}
             </ul>
         </nav>

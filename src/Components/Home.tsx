@@ -57,7 +57,6 @@ function Home() {
     }
 
     const filtrirajStatusUdomljenosti = async (event) => {
-        console.log(event.target.value);
         if(sveZivotinje.length > 0) {
             if(event.target.value == "udomljeni") {
                 const popisZivotnja = await getZivotinjeHelper();

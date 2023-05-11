@@ -7,8 +7,6 @@ import {db} from '../../../firebase.js';
 function PrikaziZivotinju(props) {
 
     const {zivotinja, popis} = props;
-    // dodat logiku za udomljene zivotinje, udomi zivotinju ovdi dodaj
-    // vjv samo if else za udomljene zivotinje jer neman vrimena za nista bolje
 
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
@@ -26,7 +24,7 @@ function PrikaziZivotinju(props) {
         const sveZivotinjeRef = doc(db, "Zivotinje", "svezivotinje");
         try {
           await updateDoc(sveZivotinjeRef, {popis: animals});
-          console.log("uspjesno usvojena zivotinja");
+          console.log("Životinja je uspješno usvojena");
         } catch(error) {
           console.error(error);
         }
