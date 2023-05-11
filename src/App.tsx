@@ -8,7 +8,7 @@ import AboutUs from './Components/AboutUs';
 import Notifications from './Components/Notifications';
 import Donations from './Components/Donations';
 import Dashboard from './Components/Dashboard';
-
+import AccountSettings from './Components/AccountSettings';
 function RequireAuth({ children }) {
   const authed = localStorage.getItem("userLogged"); 
   return authed ? children : <Navigate to="/login" replace />;
@@ -32,8 +32,10 @@ function App() {
       <Route path="/aboutus" element={<RequireAuth><AboutUs /></RequireAuth>}/>
       <Route path="/donations" element={<RequireAuth><Donations /></RequireAuth>}/>
       <Route path="/notifications" element={<RequireAuth><Notifications /></RequireAuth>} />
+      <Route path="/settings" element={<RequireAuth><AccountSettings /></RequireAuth>} />
+
+      
       <Route path="/dashboard" element={<RequireAdmin><Dashboard /></RequireAdmin>} />
-      {/* napravit sljedece donacije ili obavijesti koji je jednostavniji<Route path="/" element={<AboutUs />}/>*/}
 
       <Route path="/login" element={<Login></Login>} />
       <Route path="/register" element={<Register></Register>} />

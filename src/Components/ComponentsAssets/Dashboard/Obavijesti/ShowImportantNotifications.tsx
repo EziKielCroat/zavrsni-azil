@@ -38,8 +38,7 @@ function ShowImportantNotifications(props) {
                         </div>
 
                         <p>{el.notificationMessage}</p> 
-
-                        <span el={JSON.stringify(el)} onClick={() => {izbrisi(event)}}>Izbrisi</span>
+                        <button el={JSON.stringify(el)} onClick={() => {izbrisi(event)}}>Izbrisi</button>
                     </div>
                 )
             })}

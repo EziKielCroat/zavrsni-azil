@@ -94,7 +94,6 @@ function Home() {
     }
 
     return(
-        <div>
             <div className="container">
                 <nav className="nav-holder">
                     <h2>Azil za životinje</h2>
@@ -103,6 +102,7 @@ function Home() {
                         <button onClick={() => {navigate('/aboutus')}}><li>O nama</li></button>
                         <button onClick={() => {navigate('/donations')}}><li>Donacije</li></button>
                         <button onClick={() => {navigate('/notifications')}}><li>Obavijesti</li></button>
+                        <button onClick={() => {navigate('/settings')}}><li>Postavke računa</li></button>
                         {checkAdmin() ? (<button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>) : ( <></>)}
                     </ul>
                 </nav>
@@ -130,7 +130,6 @@ function Home() {
                     {sveZivotinje.length > 0 && <PrikaziZivotinje popis={sveZivotinje}></PrikaziZivotinje>}
                 </div>
             </div>
-        </div>
     )
 }
 

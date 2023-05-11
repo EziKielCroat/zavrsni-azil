@@ -1,0 +1,23 @@
+.account-info h4 {
+    float: left;
+    clear: both;
+}
+  
+.account-info p {
+    float: left;
+    clear: both;
+}
+  
+.account-info .title {
+    display: block;
+    margin-bottom: 10px;
+}
+  
+.account-info .content {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.account-info {
+    margin-left: 10vh;
+}
