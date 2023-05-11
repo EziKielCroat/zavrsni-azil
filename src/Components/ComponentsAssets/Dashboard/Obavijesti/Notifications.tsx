@@ -70,17 +70,7 @@ function Notifications() {
     }, []);
 
     return(
-    <div className="container">
-        <nav className="nav-holder">
-            <h2>Azil za životinje</h2>
-
-            <ul className="nav-stranice">
-                <button onClick={() => {navigate('/')}}><li>Home</li></button>
-                <button onClick={() => {navigate('/donations')}}><li>Donacije</li></button>
-                <button onClick={() => {navigate('/aboutus')}}><li>O nama</li></button>
-                {checkAdmin() ? (<button onClick={() => {navigate('/dashboard')}}><li>Admin opcije</li></button>) : ( <></>)}
-            </ul>
-        </nav>
+    <div>
         <div className="obavijesti-container">
         <button className="novaObavijest" onClick={() => {dodajObavijest()}}>Nova obavijest</button>
             {modalComponentOn && <ModalComponent removeComponent={removeComponent}></ModalComponent>}

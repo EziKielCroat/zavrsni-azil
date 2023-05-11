@@ -133,3 +133,14 @@
 .obavijesti-container {
     margin-left: 50vh;
 }
+
+.nevaznaObavijest span {
+    padding: 2vh;
+    padding-bottom: 2vh;
+    cursor: pointer;
+}
+
+.vaznaObavijest span{
+    padding: 2vh;
+    cursor: pointer;
+}
