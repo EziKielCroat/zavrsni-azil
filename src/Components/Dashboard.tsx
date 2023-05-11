@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 import Zivotinje from './ComponentsAssets/Dashboard/Zivotinje/Zivotinje';
 import Donations from './ComponentsAssets/Dashboard/Donacije/Donations';
 import Notifications from './ComponentsAssets/Dashboard/Obavijesti/Notifications';
+import Upiti from './ComponentsAssets/Dashboard/Upiti/Upiti';
 
 function Dashboard () {
     const navigate = useNavigate();
@@ -62,6 +63,7 @@ function Dashboard () {
                 {prikaziZivotinje && <Zivotinje></Zivotinje>}
                 {prikaziDonacije && <Donations></Donations>}
                 {prikaziObavijesti && <Notifications></Notifications>}
+                {prikaziUpiti && <Upiti></Upiti>}
                 </div>
         </div>
     )
