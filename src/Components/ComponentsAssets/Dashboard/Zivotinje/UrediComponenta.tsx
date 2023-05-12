@@ -48,7 +48,7 @@ function UrediComponenta(props) {
                 <br/>
                 <br />
                 <label htmlFor="taken">Udomljen/a: </label> <br />
-                <input type="checkbox" required {...register('animalAdopted')}/> <br />
+                <input type="checkbox" {...register('animalAdopted')}/> <br />
                 <label htmlFor="type">Vrsta</label> <br />
                 <select name="type" id="type" required {...register('animalType')} defaultValue={el.animalType}>
                     <option value="Pas">Pas</option>
@@ -62,7 +62,7 @@ function UrediComponenta(props) {
                 <textarea name="description" id="description" {...register('animalDescription')} defaultValue={el.animalDescription}></textarea>
                 <br/>
                 <label htmlFor="tracked">Čipiran?</label>
-                <input type="checkbox" name="tracked" {...register('animalTracked')} defaultValue={el.animalTracked}/>
+                <input type="checkbox" name="tracked" {...register('animalTracked')} checked={el.animalTracked}/>
                 <br />
                 <label htmlFor="last_checkup">Zadnji pregled</label> <br />
                 <input type="date" name="last_checkup" {...register('animalLastCheckup')} defaultValue={el.animalLastCheckup}/>
